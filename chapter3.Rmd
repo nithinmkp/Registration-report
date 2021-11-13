@@ -1,0 +1,141 @@
+# Data and Methodology {#sec4}
+## Data {#sec4.1}
+For our first and second objective, we use data of debt-GDP ratio, inflation, primary surplus as percentage of GDP and GDP growth rate. The data will be collected from OECD database , IMF world economic outlook database and the World Bank database. The period of the study is from 1980-2019. The high debt countries in our study are Belgium, Canada, France, Greece, Ireland Italy, Japan, Portugal and Spai while countries with low debt are Russia, Estonia, Luxembourg, Bulgaria and New Zealand. For our second objective, we use the data from survey of professional forecasters to estimate the inflation forecast errors of India. The data is available from September 2007 on quarterly basis and on bi-monthly basis from June 2014. 
+
+## Methodology {#sec4.2}
+@NBERw26090 uses asset pricing techniques to develop linearized version of government debt flow identity as given in \@ref(eq:eq1)
+\begin{equation}
+(\#eq:eq1)
+v_{t+1}=v_{t}+r_{t+1}^{n}-\pi_{t+1}-g_{t+1}-s_{t+1}
+\end{equation}
+The identity states that log of debt-GDP ratio at time $t+1$, $v_{t+1}$ is the sum of value of debt at the end of period $t$, $v_t$ and log nominal return on government bond portfolio $r_{t+1}^{n}$, less log inflation $\pi_{t+1}$, less log real GDP growth $g_{t+1}$ and less the primary surplus $s_{t+1}$.
+
+Iterating \@ref(eq:eq1) backwards,we calculate  terms at each date $t$ as in \@ref(eq:eq2) 
+\begin{equation}
+(\#eq:eq2)
+v_{t}=v_{0}-\sum_{i=1}^{t} s_{j}+\sum_{i=1}^{t}\left(r_{j}^{n}-\pi_{j}-g_{j}\right)
+\end{equation}
+This identity tells us where the debt to GDP ratio came from at each date – what combination of past surpluses and deficits,  bond returns, inflation, and growth, drove the debt to GDP ratio at each date t.
+
+Iterating \@ref(eq:eq1) forward and linearizing around $r=g$ gives us the present value identity
+\begin{equation}
+(\#eq:eq3)
+v_{t}=\sum_{j=1}^{T} s_{t+j}-\sum_{j=1}^{T}\left(r_{t+j}^{n}-\pi_{t+j}-g_{t+j}\right)+v_{t+T}
+\end{equation}
+The debt to GDP ratio is the present value of future surplus to GDP ratios, discounted at the ex-post real return, and adjusted for growth. Taking expected values, the debt to GDP ratio is the present value of future surplus to GDP ratios, discounted at the ex-post real return, and adjusted for growth. \@ref(eq:eq3) holds ex-post as it discounts the ex-post returns. Taking conditional expectations, the identity holds ex-ante
+\begin{equation}
+(\#eq:eq4)
+v_{t}=E_{t} \sum_{j=1}^{T} s_{t+j}-E_{t} \sum_{j=1}^{T}\left(r_{t+j}^{n}-\pi_{t+j}-g_{t+j}\right)+E_{t} v_{t+T}
+\end{equation}
+Let tildes stand for three possible transformations of variables,
+$$
+\bar{v}_{t}=v_{t} \text { or } \theta(L) v_{t} \text { or }\left(E_{t}-E_{t-1}\right) v_{t}
+$$
+and similarly for the other variables.
+
+Multiplying by $\bar{v}_{t}-E\left(\tilde{v}_{t}\right)$ and taking expectations, we obtain a variance decomposition for the value of debt,
+\begin{equation*}
+var\left(\bar{v}_{t}\right)=\sum_{j=1}^{\infty} cov\left(\bar{v}_{t}, \bar{s}_{t+j}\right)-\sum_{j=1}^{\infty} cov\left[\bar{v}_{t},\left(\bar{r}_{t+j}^{n}-\bar{\pi}_{t+j}-\bar{g}_{t+j}\right)\right]
+\end{equation*}
+Dividing by $\bar{v}_{t}$ we can express the result as fractions of variance due to each component. These components which are also coefficients of single regressions vy which $\bar{v}_{t}$ forecasts these terms , answer the simple question - what event followed a past high debt-GDP ratio? Was it a positive surpluses, high growth rates or low returns?
+
+Though variance decomposition of above form is equivalent to univariate long run regressions of transformed variables, @NBERw26090 argues that calculating these implied long-run coefficients from the VAR improves the precision of the estimates albeit at the cost of imposing VAR structure. 
+
+We then use a VAR calculate conditional expectations as below
+$$
+x_{t+1}=A x_{t}+\varepsilon_{t}
+$$
+To estimate the variance decomposition for the innovation case, $\bar{v}_{t}=\left(E_{t}-E_{t-1}\right) v_{t}$ we take the $t-1$ inovation of the present value identity in \@ref(eq:eq4) as below
+\begin{equation}
+(\#eq:eq5)
+\Delta E_{t} v_{t}=\Delta E_{t} \sum_{j=1}^{\infty} s_{t+j}-\Delta E_{t} \sum_{j=1}^{\infty}\left(r_{t+j}^{n}-\pi_{t+j}-g_{t+j}\right)
+\end{equation}
+where $\Delta E_{t} \equiv E_{t}-E_{t-1}$
+
+These decompositions are measurements and which components of the identity matters is an interesting measurement.
+
+We then turn our attention to inflation as rising public debt has always been seen together with a rise in inflation. @Cochrane2021  extends the above debt decomposition technique to arrive at an unexpected inflation identity
+\begin{align}
+\Delta E_{t+1} \pi_{t+1}-\Delta E_{t+1} r_{t+1}^{n} &=-\sum_{j=0}^{\infty} \rho^{j} \Delta E_{t+1} s_{t+1+j} - \sum_{j=0}^{\infty} \rho^{j} \Delta E_{t+1} g_{t+1+j} \notag \\
+&+\sum_{j=1}^{\infty} \rho^{j} \Delta E_{t+1} r_{t+1+j} (\#eq:eq6)
+\end{align}
+where
+$$
+r_{t+1} \equiv r_{t+1}^{n}-\pi_{t+1}
+$$
+denotes the ex-post real return on the portfolio of government debt portfolio. From the above unexpected inflation identity, we know that rise in unexpected inflation or a decline in log nominal bond return will result in a reduction of real value of debt. The reduction in real value of debt due to a fall in present value of surpluses can come either from a decline in surplus to GDP ratio or growth rate or rise in discount rates. To determine only the unexpected inflation component, @Cochrane2021 linearize the return of the government bond portfolio around a geometric maturity structure, in which the face value of maturity $j$ debt declines at rate $\omega^j$ and then eliminating bond return from the linearized bond return identity  to represent inflation as fiscal affair as below
+\begin{align}
+\sum_{j=0}^{\infty} \omega^{j} \Delta E_{t+1} \pi_{t+1+j} &=-\sum_{j=0}^{\infty} \rho^{j} \Delta E_{t+1} s_{t+1+j}-\sum_{j=0}^{\infty} \rho^{j} \Delta E_{t+1} g_{t+1+j} \notag \\
+&+\sum_{j=1}^{\infty}\left(\rho^{j}-\omega^{j}\right) \Delta E_{t+1} r_{t+1+j}(\#eq:eq7)
+\end{align}
+Each term of the above decomposition is sum of elements of an impulse-response function of a VAR. Again we start with a VAR of the form
+\begin{equation}
+(\#eq:eq8)
+x_{t+1}=A x_{t}+\varepsilon_{t}
+\end{equation}
+To examine the fiscal roots of inflation, we allow for an unexpected movement in inflation $\Delta E_{1} \pi_{1}=\varepsilon_{1}^{\pi}=1$. Then to find how much other variables typically move conditional on seeing an inflation shock we fill in shocks to the other variables by running regressions of their shocks on the inflation shock by running
+$$
+\varepsilon_{t+1}^{z}=b_{z, \pi} \varepsilon_{t+1}^{\pi}+\eta_{t+1}^{z}
+$$
+and then starting VAR as given in \@ref(eq:eq8) at
+$$
+\varepsilon_{1}=\left[\begin{array}{lllll}
+b_{r^{n}, \pi} & b_{g, \pi} & \varepsilon_{1}^{\pi}=1 & b_{s, \pi} & \ldots
+\end{array}\right]^{\prime}
+$$
+This procedure is equivalent to the usual orthogonalization of the shock covariance matrix with inflation last, but it is more transparent. 
+
+Unlike normal VAR interpretation, in a fiscal theoretic interpretation they answer the question "what changes in expectations caused the 1\% inflation?". @Cochrane2021 also shows that inflation decompositions are also decompositions of the variance of unexpected inflation and they answer the question "What fraction of the variance of unexpected inflation is due to each component?".
+
+We then turn our attention to inflation forecast errors. As mentioned in [Section \@ref(sec1)](#sec1), forecasts of inflation errors has important implications for policy analysis. @Dellas2018 uses a benchmark New-Keynesian model to illustrate how the cost of borrowing by the government is affected by the quality of inflation forecasting by market participants. Following @Dellas2018, we employ a new empirical strategy using TVC (Time varrying Coefficient) based combination forecasts and neural nets to capture  structural breaks and non-linearities which produces at least as good estimators than simple OLS based estimators. 
+
+For our last objective of determining optimal maturity structure, we follow @COCHRANE201474 and @Leeper2016 and starts with a simple constant endowment economy model
+
+- The model
+
+The representative household maximizes
+$$
+E \sum_{t=0}^\infty \beta^{t} u\left(c_{t}\right)
+$$
+The household receives a constant endowment $y_t=y$. The consumer optimally chooses consumption, $c_t$, may buy or sell nominal assets, $D_t$, at
+price $Q_{t,t+1}$, receives lump-sum transfers from the government, $z_t$, and pays lump-sum taxes, $\tau_t$.  
+The flow budget constraint of the household is given by
+\begin{equation}
+(\#eq:eq31)
+P_{t} c_{t}+P_{t} \tau_{t}+E_{t}\left[Q_{t, t+1} D_{t}\right]=P_{t} y+P_{t} z_{t}+D_{t-1}
+\end{equation}
+The short-term nominal interest rate, $R_t$, which is also the central bank’s policy instrument, is linked to the nominal bond price:
+$$
+\frac{1}{R_t}=E_{t}\left[Q_{t, t+1}\right]
+$$
+Setting government purchases to zero^[This assumption can be relaxed later] and defining primary surplus as $s_{t} \equiv \tau_{t}-z_{t}$, imposing the no-arbitrage condition and the transversaility condition and iterating \@ref(eq:eq31) to obtain household intertemporal budget constraint. Further, imposing goods market equilibrium and constant discount rate $\beta$ and assuming nominal interest rate follows a Fischer relation 
+\begin{equation}
+(\#eq:eq32)
+\frac{1}{R_{t}}=\beta E_{t} \frac{P_{t}}{P_{t+1}}=\beta E_{t} \frac{1}{\pi_{t+1}}
+\end{equation}
+Assuming no borrowing or lending among private players in equilibrium and imposing both goods and bond market clearing produces
+\begin{equation}
+(\#eq:eq33)
+\frac{B_{t-1}}{P_{t}}=E_{t} \sum_{j=0}^{\infty} \beta^{j} s_{t+j}
+\end{equation}
+\Cref{eq:eq32,eq:eq33} constitute two equilibrium conditions in four unknowns:$R_{t}, P_{t}, E_{t}\left(1 / P_{t+1}\right)$, $E_{t} \sum_{j=0}^{\infty} \beta^{j} s_{t+j} .$ We need monetary and fiscal rules to obtain determinate equilibria.
+
+The central bank policy rule is a standard @taylor1993discretion that makes deviations of the nominal interest rate from steady state proportional to deviations of inflation from steady state. 
+\begin{equation}
+(\#eq:tayloreq)
+\frac{1}{R_{t}}=\frac{1}{R^{*}}+\alpha_{\pi}\left(\frac{1}{\pi_{t}}-\frac{1}{\pi^{*}}\right)+\varepsilon_{t}^{M}
+\end{equation}
+where $\epsilon_t^M$ is the exogenous shock to monetary policy. The fiscal rule is such that the government sets deviations of the primary surplus from steady state proportional to steady-state deviations of debt
+\begin{equation}
+(\#eq:fiscaleq)
+s_{t}=s^{*}+\gamma\left(\frac{1}{R_{t-1}} \frac{B_{t-1}}{P_{t-1}}-\frac{b^{*}}{R^{*}}\right)+\varepsilon_{t}^{F}
+\end{equation}
+where $\epsilon_t^F$ is the exogenous shock to fiscal policy. For determinate equilibrium, policy choices must be consistent with the government's flow budget identity
+$$
+\frac{1}{R_{t}} \frac{B_{t}}{P_{t}}+s_{t}=\frac{B_{t-1}}{P_{t}}
+$$
+and the steady state of the model is given by
+$$
+\frac{B}{P}=b^{*}, s^{*}=\left(\beta^{-1}-1\right) \frac{b^{*}}{R^{*}}, \quad R^{*}=\frac{\pi^{*}}{\beta}, \quad m^{*}=\beta
+$$
+We then solve the model in regime F^[Ricardian equivalence in regime M makes maturity structure of bonds irrelevant for inflation] and understand the impact of passive monetary policy on inflation by calibrating the model following @bi2013uncertain. 

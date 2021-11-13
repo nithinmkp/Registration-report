@@ -1,0 +1,59 @@
+---
+documentclass: article
+output:
+  bookdown::pdf_document2:
+    number_sections: yes
+    keep_tex: true
+    toc: false
+    citation_package: natbib 
+    fig_caption: yes      
+    includes:
+      in_header: "preamble.tex"
+      before_body: "title.tex"
+    extra_dependencies: "subfig"
+    latex_engine: pdflatex
+site: bookdown::bookdown_site
+papersize: a4
+indent: true
+link-citations: yes
+urlcolor: blue
+linkcolor: blue
+citecolor: blue
+fontsize: 12pt
+bibliography: ["Papers-Reg.bib"]
+biblio-style: "apalike"
+csl: apa.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+```
+
+
+\pagenumbering{roman} 
+\vfill
+\setstretch{1.5}
+\vspace{25mm}
+\begin{center}
+\Large{\textbf{Essays on Fiscal Policy}}
+
+\large{\textbf{Abstract}}
+
+\end{center}
+```{r child = 'Abstract.Rmd'}
+```
+\newpage
+\pagenumbering{arabic} 
+```{r child = 'chapter 1.Rmd'}
+```
+
+```{r child = 'chapter2.Rmd'}
+```
+```{r child = 'chapter3.Rmd'}
+```
+\newpage
+
+---
+nocite: '@*'
+---

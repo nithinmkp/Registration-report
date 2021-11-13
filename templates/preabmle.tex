@@ -1,0 +1,84 @@
+
+\usepackage{graphicx}
+\usepackage{rotating}
+%\setbeamertemplate{caption}[numbered]
+\usepackage{hyperref}
+\usepackage[noabbrev]{cleveref}
+\usepackage{caption}
+\usepackage[normalem]{ulem}
+%\mode<presentation>
+\usepackage{wasysym}
+\usepackage{ragged2e}\justifying
+\usepackage{amsmath}
+%\usepackage{fancyref}
+\usepackage{prettyref}
+\usepackage{pdfpages}
+\usepackage[nodayofweek]{datetime}
+\usepackage{tabu}
+\usepackage{longtable}
+
+
+
+\metroset{progressbar=frametitle}
+
+\definecolor{My_blue}{HTML}{457b9d}
+\definecolor{My_white}{HTML}{edf6f9}
+\definecolor{myYellow}{HTML}{ee9b00}
+\definecolor{mySeaGreen}{HTML}{e0fbfc}
+\definecolor{mygrey}{HTML}{5e6472}
+\definecolor{myviolot}{HTML}{7678ed}
+\definecolor{myred}{HTML}{bc4749}
+\definecolor{gainsboro}{rgb}{0.86, 0.86, 0.86}
+
+\setbeamercolor{frametitle}{bg=My_blue,fg=My_white}
+\setbeamercolor{progress bar}{fg=myYellow,bg=mySeaGreen}
+\setbeamercolor{title separator}{fg=myred}
+\setbeamercolor{palette quaternary}{bg=gainsboro}
+
+%\setbeamertemplate{navigation symbols}{}
+%\institute{Department of Political Science}
+%\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~/Dropbox/teaching/clemson-academic.png}}
+%\setbeamertemplate{title page}[empty]
+
+\setbeamercovered{transparent}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[ball unnumbered]
+\setbeamertemplate{frametitle continuation}[from second]
+
+%\renewcommand{\eqref}{\cref}
+\renewcommand{\eqref}{\Cref}
+
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1.8pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1.4pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1.2pt}
+\makeatother
+
+\AtBeginPart{}
+\AtBeginSection{}
+\AtBeginSubsection{}
+\AtBeginSubsubsection{}
+\setlength{\emergencystretch}{0em}
+\setlength{\parskip}{0pt}
+
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=mygrey}
+%\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+
+
+\setbeamertemplate{footline}{
+	\leavevmode\bfseries 
+	\begin{beamercolorbox}[wd=0.9\paperwidth, ht=7pt, dp=2.5pt, center]{section in head/foot}
+	\insertsectionnavigationhorizontal{0.9\paperwidth}{\hfill}{\hfill}
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=0.1\paperwidth, ht=7pt, dp=2.5pt, center]{section in head/foot}
+		\insertframenumber/\inserttotalframenumber
+	\end{beamercolorbox}%
+	}
+
+\setbeamertemplate{bibliography item}[triangle]
+

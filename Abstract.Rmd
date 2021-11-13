@@ -1,0 +1,5 @@
+
+The advent of global slowdown and Covid-19 pandemic and the ensuing rise in government debt have raised concerns over debt sustainability and fiscal deficits in nations across the globe. In this context, this dissertation of mine has three objectives.  Whether or not government should reduce debt and whether the debt is sustainable is an important policy issue. Our first objective is to undertake a debt decomposition for selected group of countries and identify the fiscal components of government debt. Our second objective is to analyse inflation as a fiscal phenomenon as opposed to monetary phenomenon in conventional macro models. We also employ a new empirical strategy to improve the forecasts of inflation and quantify the importance of forecast errors on the value of debt decomposition. Our final objective is to analyse the optimal maturity structure of long term nominal government bonds in a Ramsey framework for the conduct of fiscal policy.
+
+***Keywords:*** Government Debt, Debt decomposition, Inflation ,Fiscal theory, Active Fiscal policy
+
