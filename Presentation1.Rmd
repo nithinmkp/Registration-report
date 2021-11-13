@@ -1,0 +1,291 @@
+---
+title: "Essays on Fiscal Policy"
+subtitle: "PhD Registration Seminar"
+author:
+  - Nithin M \newline
+  - "Roll No: 18HS92F14 "
+  - \newline 
+  - \newline 
+  - Supervisor \newline
+  - "Dr. Siddhartha Chattopadhyay"
+date: "`r format(Sys.Date(), '%d %B, %Y')`"
+titlegraphic: "Figures/kgpsvg.png"
+logo: "Figures/kgpsvg.png"
+output: 
+  bookdown::beamer_presentation2:
+    slide_level: 3
+    includes:
+      in_header: "templates/preabmle.tex"            
+    theme: metropolis
+    latex_engine: xelatex
+    template: "templates/temp_new.tex"
+    number_sections: false
+    keep_tex: true
+    citation_package: biblatex
+toc: true
+toc-title: Outline
+tocdepth: 2
+section-titles: false
+short-author: Nithin
+institute: Indian Institute of Technology-Kharagpur
+short-institute: IIT-KGP
+bibliography: ["Papers-Reg.bib"]
+biblio-title: References
+biblio-style: "apa"
+csl: apa.csl
+---
+
+```{r setup, include=FALSE}
+library(here)
+knitr::opts_chunk$set(echo = FALSE)
+library(captioner)
+library(knitr)
+library(tidyverse)
+library(kableExtra)
+```
+# Introduction 
+## Motivation
+### Motivation
+- Rise in government debt on account of global slowdown and Covid-19 pandemic
+- concerns over debt sustainability and fiscal deficits
+- Inflation concerns on account of fiscal stimulus
+-  Te need for additional support measures and the possible realization of contingent
+liabilities such as loan guarantees
+- Higher US interest rates- Challenge in containing debt
+
+## Background
+### Background {.allowframebreaks}
+> "Fiscal policy is extremely important in determining what fraction of total national income is spent by government and who bears the burden of that expenditure. By itself, it is not important for inflation."
+>
+>--- Milton Friedman
+
+> "Persistent high inflation is always and everywhere a fiscal phenomenon."
+>
+>--- Thomas Sargent
+
+\framebreak
+
+- High debt and Maturity structure- Hindrance to effective central bank policy
+- Seminal papers by @sargent1981 and @Leeper1991 - Inflation can be a fiscal phenomenon
+- Fiscal theory of price level - Debt and discount rates as important drivers of inflation
+- Coordinated policy - price stability
+- Important implications for running high deficits
+- Validity of Ricardian policies in developing economies [@ftppak; @loyo2000tight]
+
+# Review of Literature
+### Literature Review {.allowframebreaks}
+
+**Debt Decomposition**
+
+- Hall and Sargent [-@hall1997; -@Hall2011] - first study on analysis of public debt
+- @NBERw26090 - decompose det into fiscal components in each period 
+- @Das2021 -  study fiscal financing components for different sub-periods
+- @das2021inflation - debt decomposition for India using security level analysis of Centre and State 
+
+\framebreak
+
+**Fiscal roots of inflation**
+
+- Fiscal theory of price level - Channel through which monetary policy can loose control of inflation
+- Woodford [-@woodford1995price; -@woodford1998control; -@woodford2001]
+
+- @Cochrane2021 - Identify fiscal components of inflation
+- Mixed empirical support 
+  - Monetary policy- @canzoneri2001price and @afonso2002disturbing
+  - Fiscal policy- @cochrane1998frictionless, @loyo2000tight, @sala2003testing and @ftppak
+  
+\framebreak
+
+**Inflation forecast errors**
+
+- Importance of inflation forecasts - @Tobin1981391, @gonzalez2016forecasting, and @Dellas2018  
+- Forecast combinations and relative gains in accuracy - @granger1969 and @granger1984  
+- Mispecification and structural breaks- @Timmermann2008 , @gonzalez2016forecasting and @clark2010
+
+\framebreak
+
+**Optimum maturity structure**
+
+- Role of maturity structure of government debt - @COCHRANE201474 and @Leeper2016
+  - Persistent / Drawn out inflation
+  - channel for revaluation of debt
+  - Regime specific effects
+- Optimal fiscal policy - @Leeper2016, @LEEPER2021600, and @saroj2021
+
+# Research Gap and Objectives
+## Research Gap
+### Research Gap
+
+- Only limited studies on government finances and debt decomposition 
+  - Indian case - @BUITER1992171, @ranga2003, and @das2021inflation
+  - global context - @NBERw26090 , @Das2021 and @betty2019
+- Analysis of inflation as a fiscal phemomenon is limited in Indian context - @kaur2018relationship and @bhat2020identifying
+- Optimal maturity structure of debt - geometric maturity [@COCHRANE201474; @Leeper2016]
+
+## Research Objectives
+### Research Objectives
+
+1. Understand the fiscal components of government debt for high debt and low debt countries
+1. Identify the fiscal components of inflation for India and compare the inflation forecast errors
+1. Identify the optimum maturity bond structure for optimal fiscal policy 
+
+# Data and Methodology
+## Data
+### Data {.allowframebreaks}
+
+```{r table1, eval=TRUE,echo=FALSE,results='asis',fig.pos='!H'}
+df<-tibble(Variables= c("Debt-GDP Ratio", "Inflation","Primary Surplus as percentage of GDP","Nominal rate of return on government Debt"),
+           Sources= c("OECD Database, IMF World Economic Outlook and World Bank"),
+           Period= c("1980-2019"))
+cat("\\renewcommand{\\arraystretch}{2.25}  \n")
+df %>% kable(,"latex",booktabs = T,caption = "Data and Sources: Objective 1") %>% kable_styling(full_width = F,latex_options = "scale_down") %>% kable_classic()
+```
+```{r include=FALSE,warning=FALSE}
+df2<-tibble(Countries=c(" Belgium", "Canada", "France", "Greece","Italy",  "Portugal","Spain","Russia", "Estonia", "Luxembourg", "Bulgaria","New Zealand"),
+"Debt-GDP Ratio (%)"=c(99.57,88.01,99.20,174.15,133.43,119.4,95.9,13.79,7.61,21.61,19.33,28.07))
+df[,2]<-lapply(df[,2],as.numeric)
+```
+\framebreak
+```{r table2,eval=TRUE,echo=FALSE,results='asis',fig.pos='!H',message=FALSE,warning=FALSE}
+library(kableExtra)
+cat("\\renewcommand{\\arraystretch}{0.47}  \n")
+df2 %>% kable("latex",booktabs = T,caption = "Countries and Debt-GDP Ratio: Objective 1",linesep="") %>% kable_styling(full_width = F) %>% kable_classic() %>% 
+        pack_rows("High Debt Countries",1,7) %>% 
+        pack_rows("Low Debt Countries",8,12)
+
+```
+
+For inflation decomposition of India, we use data from RBI handbook of statistics on Indian economy, NIPFP (long term fiscal trends data) and Ministry of finance for debt, growth rate, inflation and discount rate. The data is available from 1951 on annual basis
+
+For objective 2, we use the data from survey of professional forecasters
+
+- Data available from September 2007 on quarterly basis
+- From June 2014 on a bi-monthly bais
+
+## Methodology
+### Methodology {.allowframebreaks}
+
+**Debt Decomposition**
+
+@NBERw26090 uses asset pricing techniques to develop linearized version of government debt flow identity as given 
+\begin{equation}
+(\#eq:eq1)
+v_{t+1}=v_{t}+r_{t+1}^{n}-\pi_{t+1}-g_{t+1}-s_{t+1}
+\end{equation}
+
+Iterating \@ref(eq:eq1) backwards,we calculate  terms at each date $t$ as in 
+\begin{equation}
+(\#eq:eq2)
+v_{t}=v_{0}-\sum_{i=1}^{t} s_{j}+\sum_{i=1}^{t}\left(r_{j}^{n}-\pi_{j}-g_{j}\right)
+\end{equation}
+
+Iterating \@ref(eq:eq1) forward and linearizing around $r=g$ gives us the present value identity
+\begin{equation}
+(\#eq:eq3)
+v_{t}=\sum_{j=1}^{T} s_{t+j}-\sum_{j=1}^{T}\left(r_{t+j}^{n}-\pi_{t+j}-g_{t+j}\right)+v_{t+T}
+\end{equation}
+
+we obtain a variance decomposition for the value of debt,
+\begin{equation*}
+var\left(\bar{v}_{t}\right)=\sum_{j=1}^{\infty} cov\left(\bar{v}_{t}, \bar{s}_{t+j}\right)-\sum_{j=1}^{\infty} cov\left[\bar{v}_{t},\left(\bar{r}_{t+j}^{n}-\bar{\pi}_{t+j}-\bar{g}_{t+j}\right)\right]
+\end{equation*}
+
+To estimate the variance decomposition for the innovation case, $\bar{v}_{t}=\left(E_{t}-E_{t-1}\right) v_{t}$ we take the $t-1$ inovation of the present value identity in \@ref(eq:eq3) as below
+\begin{equation}
+(\#eq:eq5)
+\Delta E_{t} v_{t}=\Delta E_{t} \sum_{j=1}^{\infty} s_{t+j}-\Delta E_{t} \sum_{j=1}^{\infty}\left(r_{t+j}^{n}-\pi_{t+j}-g_{t+j}\right)
+\end{equation}
+where $\Delta E_{t} \equiv E_{t}-E_{t-1}$
+
+\framebreak
+
+**Fiscal roots of inflation**
+
+@Cochrane2021  extends the above debt decomposition technique to arrive at an unexpected inflation identity
+\begin{align}
+\Delta E_{t+1} \pi_{t+1}-\Delta E_{t+1} r_{t+1}^{n} &=-\sum_{j=0}^{\infty} \rho^{j} \Delta E_{t+1} s_{t+1+j} - \sum_{j=0}^{\infty} \rho^{j} \Delta E_{t+1} g_{t+1+j} \notag \\
+&+\sum_{j=1}^{\infty} \rho^{j} \Delta E_{t+1} r_{t+1+j} (\#eq:eq6)
+\end{align}
+where
+$$
+r_{t+1} \equiv r_{t+1}^{n}-\pi_{t+1}
+$$
+\begin{align}
+\sum_{j=0}^{\infty} \omega^{j} \Delta E_{t+1} \pi_{t+1+j} &=-\sum_{j=0}^{\infty} \rho^{j} \Delta E_{t+1} s_{t+1+j}-\sum_{j=0}^{\infty} \rho^{j} \Delta E_{t+1} g_{t+1+j} \notag \\
+&+\sum_{j=1}^{\infty}\left(\rho^{j}-\omega^{j}\right) \Delta E_{t+1} r_{t+1+j}(\#eq:eq7)
+\end{align}
+
+we fill in shocks to the other variables by running regressions of their shocks on the inflation shock by running
+$$
+\varepsilon_{t+1}^{z}=b_{z, \pi} \varepsilon_{t+1}^{\pi}+\eta_{t+1}^{z}
+$$
+and then starting VAR as given in  at
+$$
+\varepsilon_{1}=\left[\begin{array}{lllll}
+b_{r^{n}, \pi} & b_{g, \pi} & \varepsilon_{1}^{\pi}=1 & b_{s, \pi} & \ldots
+\end{array}\right]^{\prime}
+$$
+\framebreak
+
+**Inflation forecast errors**
+
+- A new empirical strategy using TVC (Time varrying Coefficient) based combination forecasts and neural net
+
+- Following @Dellas2018 , the methodology is as follows
+  1. Determine structural breaks 
+     - Bai and Perron [-@bai1998 ; -@bai2003] and @ALTISSIMO2003207
+     - Recursive estimation and CUSUM squared test
+  1. No sign of instability - Combination forecasts work well
+  1. instability - TVC based estimators
+
+\framebreak
+
+**Optimum maturity structure**
+
+For our last objective of determining optimal maturity structure, we follow @COCHRANE201474 and @Leeper2016 and starts with a simple constant endowment economy model
+
+The representative household maximizes
+$$
+E \sum_{t=0}^\infty \beta^{t} u\left(c_{t}\right)
+$$
+The flow budget constraint of the household is given by
+\begin{equation}
+(\#eq:eq31)
+P_{t} c_{t}+P_{t} \tau_{t}+E_{t}\left[Q_{t, t+1} D_{t}\right]=P_{t} y+P_{t} z_{t}+D_{t-1}
+\end{equation}
+
+Nominal interest, central bank traget and bond prices given by
+instrument, is linked to the nominal bond price:
+$$
+\frac{1}{R_t}=E_{t}\left[Q_{t, t+1}\right]
+$$
+Assuming nominal interest rate obeys Fischer relation and imposing goods and bond market clearing condition
+\begin{equation}
+(\#eq:eq33)
+\frac{B_{t-1}}{P_{t}}=E_{t} \sum_{j=0}^{\infty} \beta^{j} s_{t+j}
+\end{equation}
+
+The central bank policy rule is a standard @taylor1993discretion
+\begin{equation}
+(\#eq:tayloreq)
+\frac{1}{R_{t}}=\frac{1}{R^{*}}+\alpha_{\pi}\left(\frac{1}{\pi_{t}}-\frac{1}{\pi^{*}}\right)+\varepsilon_{t}^{M}
+\end{equation}
+
+The fiscal rule is
+\begin{equation}
+(\#eq:fiscaleq)
+s_{t}=s^{*}+\gamma\left(\frac{1}{R_{t-1}} \frac{B_{t-1}}{P_{t-1}}-\frac{b^{*}}{R^{*}}\right)+\varepsilon_{t}^{F}
+\end{equation}
+
+government's flow budget identity
+$$
+\frac{1}{R_{t}} \frac{B_{t}}{P_{t}}+s_{t}=\frac{B_{t-1}}{P_{t}}
+$$
+steady state of the model is given by
+$$
+\frac{B}{P}=b^{*}, s^{*}=\left(\beta^{-1}-1\right) \frac{b^{*}}{R^{*}}, \quad R^{*}=\frac{\pi^{*}}{\beta}, \quad m^{*}=\beta
+$$
+
+###  {.standout .plain}
+Thank you
+
